@@ -1,0 +1,50 @@
+# ── Dataset ───────────────────────────────────────────────────────────────────
+dataset_speaker_only/
+final_data/
+data/
+data_analysis/Manual_Checking/
+
+# ── Model Checkpoints ────────────────────────────────────────────────────────
+exp/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# ── All Python source code ────────────────────────────────────────────────────
+*.py
+*.ipynb
+
+# ── Large analysis JSONs ─────────────────────────────────────────────────────
+Master_EDA_Report.json
+Perfect_Text_Original_Data.json
+Text_Anomalies_*.json
+Perfect_Data_EDA_Report.json
+
+# ── API Keys / Secrets ────────────────────────────────────────────────────────
+.env
+*.env
+secrets.json
+api_keys*
+
+# ── Audio / Binary ────────────────────────────────────────────────────────────
+*.wav
+*.mp3
+*.flac
+*.tar
+*.parquet
+
+# ── System / IDE ──────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
+*.egg-info/
+dist/
+build/
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+tensorboard/
+wandb/

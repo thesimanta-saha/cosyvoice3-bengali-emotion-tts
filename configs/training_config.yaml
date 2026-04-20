@@ -1,0 +1,74 @@
+# ─────────────────────────────────────────────────────────────────
+#  CosyVoice3 Bengali Emotion SFT — Training Configuration
+#  Epoch 29 (Final)
+# ─────────────────────────────────────────────────────────────────
+
+# Model
+model: llm                         # Fine-tune LLM component only
+save_states: model_only            # Save only LLM weights per checkpoint
+tag: CV
+
+# Base checkpoint
+# checkpoint: <path_to>/Fun-CosyVoice3-0.5B/llm.pt
+# config:     <path_to>/Fun-CosyVoice3-0.5B/cosyvoice3.yaml
+
+# Training schedule
+max_epoch: 30
+dtype: fp32                        # Full precision (no AMP)
+use_amp: false
+
+# Optimizer
+optim: adam
+optim_conf:
+  lr: 0.0001                       # 1e-4 constant learning rate
+
+# Scheduler
+scheduler: constantlr
+scheduler_conf:
+  warmup_steps: 100                # Linear warmup for first 100 steps
+
+# Gradient
+grad_clip: 5                       # Clip gradients at norm 5
+accum_grad: 1                      # No gradient accumulation
+
+# Distributed training
+train_engine: torch_ddp
+dist_backend: nccl
+
+# Checkpointing
+save_per_step: 500                 # Save checkpoint every 500 steps
+log_interval: 10
+
+# Data loading
+num_workers: 2
+pin_memory: false
+prefetch: 100
+timeout: 60
+
+# Advanced (all disabled)
+deepspeed: false
+deepspeed_config: null
+deepscale: false
+deepscale_config: null
+dpo: false
+ref_model: null
+qwen_pretrain_path: null
+
+# ─────────────────────────────────────────────────────────────────
+#  Final Metrics (epoch 29, step 26032)
+# ─────────────────────────────────────────────────────────────────
+#  loss:     0.1067
+#  accuracy: 97.23%
+# ─────────────────────────────────────────────────────────────────
+
+# ─────────────────────────────────────────────────────────────────
+#  Dataset Summary
+# ─────────────────────────────────────────────────────────────────
+#  Training samples:  2,619
+#  Duration:          4.12 hours
+#  Language:          Bengali (Bangla)
+#  Sample rate:       24,000 Hz
+#  Format:            WebDataset Parquet (3 shards, 683 MB)
+#  Steps per epoch:   ~867
+#  Total steps:       26,032
+# ─────────────────────────────────────────────────────────────────
